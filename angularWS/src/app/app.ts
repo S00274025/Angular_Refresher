@@ -8,8 +8,10 @@ import { CarList } from './features/cars/pages/car-list/car-list';
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
+
 export class App {
   protected readonly title = signal('angularWS');
+
 }
 
 
