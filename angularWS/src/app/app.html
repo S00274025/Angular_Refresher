@@ -1,6 +1,13 @@
-<router-outlet>
-<h1>2026 Client Application for Worksheets</h1>
+<div class="app-shell">
+  <header>
+    <h1>{{ title() }}</h1>
+    <nav>
+      <a routerLink="/cars">Cars</a>
+      <a routerLink="/cars/new">Add Car</a>
+    </nav>
+  </header>
 
- <app-car-list></app-car-list>
-
-<router-outlet /> 
+  <main>
+    <router-outlet />
+  </main>
+</div>

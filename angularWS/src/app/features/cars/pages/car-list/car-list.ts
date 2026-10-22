@@ -1,13 +1,14 @@
 
 import { Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { CarService } from '../../services/car';
 import { Car } from '../../models/car.model';
 import { Observable } from 'rxjs';
 import { CarCard } from '../../components/car-card/car-card';
 @Component({
   selector: 'app-car-list',
-  imports: [AsyncPipe, CarCard],
+  imports: [AsyncPipe, CarCard, RouterLink],
   templateUrl: './car-list.html',
   styleUrl: './car-list.scss'
 })

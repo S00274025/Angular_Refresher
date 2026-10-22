@@ -35,12 +35,12 @@ export class CarForm {
         : {})
     };
 
-    (this.carService as any).addCar(carData).subscribe({
-      next: (response: any) => {
+    this.carService.addCar(carData).subscribe({
+      next: (response: Car) => {
         console.log('Car added successfully:', response);
         this.router.navigate(['/cars']);
       },
-      error: (error: any) => {
+      error: (error: unknown) => {
         console.error('Error adding car:', error);
       }
     });

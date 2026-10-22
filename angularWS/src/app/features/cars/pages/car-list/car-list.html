@@ -1,14 +1,15 @@
 
-<h2>Car List</h2>
+<section>
+  <h2>Car List</h2>
+  <a routerLink="/cars/new">Add new car</a>
 
-@if (cars$ | async; as cars) {
-  <ul>
-   <div class="grid">
-  @for (car of cars; track car._id) {
-    <app-car-card [car]="car" />
+  @if (cars$ | async; as cars) {
+    <div class="grid">
+      @for (car of cars; track car._id) {
+        <app-car-card [car]="car" />
+      }
+    </div>
+  } @else {
+    <p>Loading cars...</p>
   }
-</div>
-  </ul>
-} @else {
-  <p>Loading cars...</p>
-}
+</section>
