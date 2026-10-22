@@ -1,17 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CarList } from './features/cars/pages/car-list/car-list';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet,CarList],
+  imports: [RouterOutlet, RouterLink],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
-
 export class App {
-  protected readonly title = signal('angularWS');
-
+  protected readonly title = signal('2026 Client Application for Worksheets');
 }
 
 
