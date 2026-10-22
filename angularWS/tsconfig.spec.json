@@ -3,8 +3,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "vitest/globals"
+        "outDir":"./out-tsc/app",
+        "types": [
+        "vitest/globals"
+      
     ]
   },
   "include": [
