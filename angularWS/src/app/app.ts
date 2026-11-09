@@ -1,14 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet, RouterLink],
   selector: 'app-root',
-  styleUrl: './app.scss',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('2026 Client Application for Worksheets');
+export class AppComponent {
+  title() {
+    return 'Angular Refresher';
+  }
 }
-
-
