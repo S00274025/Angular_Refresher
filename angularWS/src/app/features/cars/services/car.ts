@@ -1,8 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Car, CreateCarDto } from '../models/car.model';
-
+import { Car, CreateCarDto,UpdateCarDto} from '../models/car.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,13 +47,18 @@ addCar(car: CreateCarDto): Observable<Car> {
     .pipe(catchError((err) => this.handleError(err)));
 }
 
-  updateCar(id: string, car: Partial<Car>): Observable<Car> {
-    return this.http.put<Car>(`${this.apiUrl}/${id}`, car, { headers: this.headers });
+    updateCar(id: string, changes: UpdateCarDto): Observable<Car> {
+    return this.http
+      .put<Car>(`${this.apiUrl}/${id}`, changes, { headers: this.headers })
+      .pipe(catchError((err) => this.handleError(err)));
   }
 
   deleteCar(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.headers });
+    return this.http
+      .delete<void>(`${this.apiUrl}/${id}`, { headers: this.headers })
+      .pipe(catchError((err) => this.handleError(err)));
   }
+  
   private handleError(error: HttpErrorResponse): Observable<never> {
     let message: string;
 

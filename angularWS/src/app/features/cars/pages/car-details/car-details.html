@@ -1,28 +1,25 @@
-<!-- 
 <h2>Car Details</h2>
 
-@if (car(); as carData) {
-  <div>
-    <h1>{{ carData.model }}</h1>
-    <p>Make: {{ carData.make }}</p>
-    <p>Year: {{ carData.year }}</p>
-    <p>ID: {{ id() }}</p>
-  </div>
-} @else {
-  <p>Loading car details...</p>
-} -->
-<h2>Car Details</h2>
-
-<p> Car Id is {{id()}}</p>
+<p>Car Id is {{ id() }}</p>
 
 @let s = state();
 @if (s.status === 'loading') {
   <p>Loading car details...</p>
 } @else if (s.status === 'error') {
-  <p >{{ s.message }}</p>
+  <p>{{ s.message }}</p>
 } @else {
   <h2>{{ s.data.make }} {{ s.data.model }}</h2>
   @if (s.data.year) {
     <p>Year: {{ s.data.year }}</p>
+  }
+
+  <a matButton="filled" [routerLink]="['/cars', s.data._id, 'edit']">Edit</a>
+
+  <button matButton="outlined" [disabled]="deleting()" (click)="deleteCar(s.data)">
+    Delete
+  </button>
+
+  @if (deleteError(); as message) {
+    <p class="error">{{ message }}</p>
   }
 }
