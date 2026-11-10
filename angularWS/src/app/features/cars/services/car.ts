@@ -13,24 +13,40 @@ export class CarService {
     'x-api-key': 'Dmf2ZKgxsVJM7Vg6'
   });
 
- getCars(): Observable<Car[]> {
+//  getCars(): Observable<Car[]> {
+//   return this.http
+//     .get<Car[]>(this.apiUrl)
+//     .pipe(catchError((err) => this.handleError(err)));
+//  }
+
+//   getCarById(id: string): Observable<Car> {
+//     return this.http.get<Car>(`${this.apiUrl}/${id}`)
+//      .pipe(catchError((err) => this.handleError(err)));
+//   }
+
+//   addCar(car: CreateCarDto): Observable<Car> {
+//     return this.http.post<Car>(this.apiUrl, car)
+//       .pipe(
+//         catchError((err) => this.handleError(err))
+//       )
+//   }
+getCars(): Observable<Car[]> {
   return this.http
-    .get<Car[]>(this.apiUrl)
+    .get<Car[]>(this.apiUrl, { headers: this.headers })
     .pipe(catchError((err) => this.handleError(err)));
- }
+}
 
-  getCarById(id: string): Observable<Car> {
-    return this.http.get<Car>(`${this.apiUrl}/${id}`)
-     .pipe(catchError((err) => this.handleError(err)));
-  }
+getCarById(id: string): Observable<Car> {
+  return this.http
+    .get<Car>(`${this.apiUrl}/${id}`, { headers: this.headers })
+    .pipe(catchError((err) => this.handleError(err)));
+}
 
-  addCar(car: CreateCarDto): Observable<Car> {
-    return this.http.post<Car>(this.apiUrl, car)
-      .pipe(
-        catchError((err) => this.handleError(err))
-      )
-  }
-
+addCar(car: CreateCarDto): Observable<Car> {
+  return this.http
+    .post<Car>(this.apiUrl, car, { headers: this.headers })
+    .pipe(catchError((err) => this.handleError(err)));
+}
 
   updateCar(id: string, car: Partial<Car>): Observable<Car> {
     return this.http.put<Car>(`${this.apiUrl}/${id}`, car, { headers: this.headers });
